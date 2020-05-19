@@ -14,13 +14,13 @@ const logEntrySchema = new Schema({
   },
   description: String,
   comments: String,
+  image: String,
   rating: {
     type: Number,
     min: 0,
     max: 10,
     default: 0,
   },
-  image: String,
   latitude: {
     ...requiredNumber,
     min: -90,
@@ -32,14 +32,13 @@ const logEntrySchema = new Schema({
     max: 180,
   },
   visitDate: {
-    type: Date,
     required: true,
+    type: Date,
   },
 }, {
   timestamps: true,
 });
 
+const LogEntry = mongoose.model('LogEntry', logEntrySchema);
 
-const logEntry = mongoose.model('LogEntry', logEntrySchema);
-
-module.exports = logEntry;
+module.exports = LogEntry;
